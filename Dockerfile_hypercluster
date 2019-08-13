@@ -138,6 +138,8 @@ RUN apt-get install $(apt-cache search libicu[0-9][0-9]|cut -d' ' -f 1) rsync li
     tar -xf azcopy.tar.gz && \
     bash install.sh && \
     rm -rf azcopy azcopy.tar.gz
+RUN apt-get install -y tmux psmisc libsm6 libxrender1 libxext-dev && \
+    pip install tensorboardX tensorflow-gpu==1.12.0 scikit-image
 RUN echo "export PATH=$PATH:/opt/miniconda/bin" >> /etc/bash.bashrc
 ENTRYPOINT sudo service ssh start && bash
 
